@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+    <h1>Dashboard</h1>
+    <p>Latest invoices</p>
+    {% if latest_invoice_list %}
+    <ul>
+    {% for invoice in latest_invoice_list %}
+    <li>
+        <a href="{% url 'product_app:invoice_detail' invoice.id %}">{{ invoice.purchase_date }}</a>
+
+    </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No invoices are available.</p>
+{% endif %}
+
+{% endblock %}

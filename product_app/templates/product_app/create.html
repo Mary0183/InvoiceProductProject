@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<form action="{% url 'product_app:create'  %}" method="post">
+    {% csrf_token %}
+    <p>
+        
+        <label for="">Product name: </label>
+        <input name="product.product_name">
+    </p>
+    <p>
+        <label for="">Product price: </label>
+        <input name="product.price">
+    </p>
+    
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}

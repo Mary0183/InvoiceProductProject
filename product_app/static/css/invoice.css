@@ -1,0 +1,26 @@
+h1 {
+    color: #c25100;
+}
+
+.container {
+    width: 1600px;
+    background-color: #ffffff;
+  }
+
+.invoice_title {
+    margin-bottom: 30px;
+}
+
+.nav a {
+    margin: 0 50px;
+    font-size: 18px;
+  }
+
+.product_list {
+    margin-bottom: 30px; 
+}
+
+p {
+    margin-bottom: 30px;
+}
+

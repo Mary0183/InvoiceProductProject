@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+    {% if latest_invoice_list %}
+        <ul>
+        {% for invoice in latest_invoice_list %}
+        <li>
+            <a class="delete_link" href= "{% url 'product_app:delete_invoice' invoice.id %}"> x</a>
+            <a href="{% url 'product_app:invoice_detail' invoice.id %}">{{ invoice.purchase_date }}</a>
+        
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No invoices are available.</p>
+    {% endif %}
+    <a href="/products/invoice_create">Create New</a>
+
+{% endblock %}
+

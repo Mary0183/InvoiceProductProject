@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<form action="{% url 'product_app:invoice_create'  %}" method="post">
+    {% csrf_token %}
+    <p>
+        
+        <label for="">Invoice date: </label>
+        <input name="invoice.purchase_date">
+    </p>
+    <p>
+        <label for="">Invoice total: </label>
+        <input name="invoice.total_invoice">
+    </p>
+    
+    <input type="submit" value="Save">
+</form>
+
+{% endblock %}

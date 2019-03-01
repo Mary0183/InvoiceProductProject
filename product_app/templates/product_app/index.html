@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+
+{% if latest_product_list %}
+    <ul>
+    {% for product in latest_product_list %}
+    <li>
+        <a class="delete_link" href="{% url 'product_app:delete_product' product.id %}">x</a>
+        <a href="{% url 'product_app:detail' product.id %}">{{ product.product_name }}</a>
+        
+    </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No products are available.</p>
+{% endif %}
+<a href="/products/create">Create New</a>
+
+{% endblock %}

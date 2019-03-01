@@ -1,0 +1,60 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<h1 class="invoice_title">Fecha factura {{ invoice.purchase_date }}</h1>
+
+<form action="{% url 'product_app:invoice_create_product' invoice.id  %}" method="post">
+    {% csrf_token %}
+    Product:
+    <select class="product_list" name="select_product">
+        {% for detalle_producto in product_list %}
+        <option value="{{ detalle_producto.id}}">
+            {{ detalle_producto.product_name }}
+            
+        </option>
+        {% endfor %}
+    </select>
+
+    <p>
+       Price:
+        <input type="text" name="price"> 
+    </p>
+    
+    <p>
+        Quantity:
+         <input type="text" name="quantity"> 
+     </p>
+     
+     <input type="submit" value="Add">
+    
+</form>
+
+<p>cantidad de productos: {{ product_count }} </p>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<ul>
+    {% for invoice_product in invoice_products %}
+    <li>
+    <p>
+        <a class="delete_link" href="{% url 'product_app:delete_invoice_product' invoice_product.id  %}">x</a>
+        producto: {{ invoice_product.product.product_name }}
+    </p>
+    <p>
+        price: {{ invoice_product.price}}
+    </p>
+       
+    <p>
+        quantity: {{ invoice_product.quantity}}
+    </p>
+        
+    </li>
+    {% endfor %}
+</ul>
+
+<p>
+    total precio de productos: {{ total_price_products }}
+</p>
+
+{% endblock %}
+
