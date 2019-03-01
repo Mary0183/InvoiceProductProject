@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="invoice_title">Fecha factura {{ invoice.purchase_date }}</h1>
+<h1 class="invoice_title">Invoice date {{ invoice.purchase_date }}</h1>
 
 <form action="{% url 'product_app:invoice_create_product' invoice.id  %}" method="post">
     {% csrf_token %}
