@@ -39,14 +39,19 @@ def invoice_detail(request, invoice_id):
     invoice = get_object_or_404(Invoice, pk=invoice_id)
     invoice_products = invoice.invoice_product_set.all()
     total_price_products = 0
+    total_quantity_products = 0
+
     for product in invoice_products:
         total_price_products = total_price_products + product.price
+        total_quantity_products = total_quantity_products + product.quantity
+
+    
     product_list = Product.objects.all()
 
     return render(request, 'product_app/invoice_detail.html', {
         'invoice': invoice,
         'invoice_products': invoice_products,
-        'product_count': len(invoice_products),
+        'product_count': total_quantity_products,
         'total_price_products': total_price_products,
         'product_list': product_list
         

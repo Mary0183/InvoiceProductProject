@@ -1,19 +1,35 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #2e398f;
+    background: linear-gradient(#4d58ab, #1e2352);
+    height: 100%;
+    color: #ffffff
+}
+
 h1 {
     color: #c25100;
 }
 
 .container {
-    width: 1600px;
-    background-color: #ffffff;
+    width: 425px;
+    margin: 0 auto;
   }
+
+.nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 
 .invoice_title {
     margin-bottom: 30px;
 }
-
 .nav a {
-    margin: 0 50px;
-    font-size: 18px;
+    margin: 0 20px;
+    font-size: 80px;
   }
 
 .product_list {
@@ -24,3 +40,6 @@ p {
     margin-bottom: 30px;
 }
 
+button, select, input {
+    color: #000000
+}
