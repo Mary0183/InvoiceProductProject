@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -7,7 +8,10 @@
 <form action="{% url 'product_app:invoice_create_product' invoice.id  %}" method="post">
     {% csrf_token %}
     Product:
-    <select class="product_list" name="select_product">
+    <select class="product_list" name="select_product" id="select_product">
+        <option value="0">
+            
+        </option>
         {% for detalle_producto in product_list %}
         <option value="{{ detalle_producto.id}}">
             {{ detalle_producto.product_name }}
@@ -18,12 +22,12 @@
 
     <p>
        Price:
-        <input type="text" name="price"> 
+        <input type="text" name="price" disabled id="price"> 
     </p>
     
     <p>
         Quantity:
-         <input type="text" name="quantity"> 
+         <input type="text" name="quantity" disabled id="quantity"> 
      </p>
      
      <input type="submit" value="Add">
@@ -55,6 +59,8 @@
 <p>
     total precio de productos: {{ total_price_products }}
 </p>
+
+<script src="{% static 'js/invoice_detail/index.js' %}"></script>
 
 {% endblock %}
 
